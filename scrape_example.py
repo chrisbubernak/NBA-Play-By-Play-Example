@@ -61,6 +61,7 @@ frame = extract_data(play_by_play_url(game_id))
 
 substitutionsOnly = frame[frame["EVENTMSGTYPE"] == 8][['PERIOD', 'EVENTNUM', 'PLAYER1_ID', 'PLAYER2_ID']]
 substitutionsOnly.columns = ['PERIOD', 'EVENTNUM', 'OUT', 'IN']
+substitutionsOnly['EVENTNUM'] = substitutionsOnly.index
 
 subs_in = split_subs(substitutionsOnly, 'IN')
 subs_out = split_subs(substitutionsOnly, 'OUT')
